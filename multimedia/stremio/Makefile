@@ -17,7 +17,8 @@ DIST_TUPLE += 		github itay-grudev SingleApplication aede311d28d20179216c5419b58
 
 BUILD_DEPENDS = net/curl \
 				x11/gnome/librsvg  \
-				devel/cmake 
+				devel/cmake \
+				x11/qt5/qtbase
 
 RUN_DEPENDS = 	multimedia/mpv \
 		lang/node \
