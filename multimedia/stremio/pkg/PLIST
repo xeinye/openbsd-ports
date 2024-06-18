@@ -1,0 +1,18 @@
+share/stremio/
+share/stremio/icons/
+share/stremio/icons/smartcode-stremio-tray_128.png
+share/stremio/icons/smartcode-stremio-tray_16.png
+share/stremio/icons/smartcode-stremio-tray_22.png
+share/stremio/icons/smartcode-stremio-tray_24.png
+share/stremio/icons/smartcode-stremio-tray_32.png
+share/stremio/icons/smartcode-stremio-tray_64.png
+share/stremio/icons/smartcode-stremio_128.png
+share/stremio/icons/smartcode-stremio_16.png
+share/stremio/icons/smartcode-stremio_22.png
+share/stremio/icons/smartcode-stremio_24.png
+share/stremio/icons/smartcode-stremio_32.png
+share/stremio/icons/smartcode-stremio_64.png
+share/stremio/node
+share/stremio/server.js
+share/stremio/smartcode-stremio.desktop
+@bin share/stremio/stremio
