@@ -1,6 +1,6 @@
---- release.makefile.orig	Mon Jun 17 23:58:42 2024
-+++ release.makefile	Tue Jun 18 00:27:19 2024
-@@ -1,40 +1,38 @@
+--- release.makefile.orig	Fri Jun 21 01:37:04 2024
++++ release.makefile	Fri Jun 21 01:37:58 2024
+@@ -1,40 +1,40 @@
 -
 +PREFIX := /usr/local
  BUILD_DIR := build
@@ -31,6 +31,8 @@
 -	cp ../mpv-build/mpv/build/libmpv.so* "${INSTALL_DIR}/"
 -endif
 +	ln -sf $(NODE) "${INSTALL_DIR}/node"
++	ln -sf "$(INSTALL_DIR)"/stremio /usr/local/bin/stremio
++	chmod 755 /usr/local/bin/stremio
  
  uninstall:
 -	rm -f /usr/bin/stremio
