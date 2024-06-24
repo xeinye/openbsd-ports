@@ -16,18 +16,22 @@ DIST_TUPLE += 		github itay-grudev SingleApplication aede311d28d20179216c5419b58
 
 
 BUILD_DEPENDS = net/curl \
-				x11/gnome/librsvg  \
-				devel/cmake \
-				x11/qt5/qtbase
+			x11/gnome/librsvg  \
+			devel/cmake \
+			x11/qt5/qtbase \
+			x11/qt5/qtwebengine \
+			x11/qt5/qtwebchannel \
+			multimedia/mpv
 
 RUN_DEPENDS = 	multimedia/mpv \
-		lang/node \
-		x11/qt5/qtbase \
-		x11/qt5/qtdeclarative \
-		x11/qt5/qtquickcontrols \
-		x11/qt5/qtquickcontrols2 \
-		x11/qt5/qttranslations \
-		x11/qt5/qtwebchannel 
+			lang/node \
+			x11/qt5/qtbase \
+			x11/qt5/qtdeclarative \
+			x11/qt5/qtquickcontrols \
+			x11/qt5/qtquickcontrols2 \
+			x11/qt5/qtwebengine \
+			x11/qt5/qttranslations \
+			x11/qt5/qtwebchannel 
 
 do-build:
 	cd ${WRKDIST} && \
@@ -37,6 +41,8 @@ do-build:
 do-install: 
 	cd ${WRKDIST} && \
 	make -f release.makefile install
+
+post-install:
 	ln -sf /usr/local/share/stremio/stremio /usr/local/bin/stremio
 	chmod 755 /usr/local/bin/stremio
 

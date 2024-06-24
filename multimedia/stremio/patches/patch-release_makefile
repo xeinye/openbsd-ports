@@ -1,6 +1,6 @@
---- release.makefile.orig	Fri Jun 21 01:37:04 2024
-+++ release.makefile	Fri Jun 21 01:37:58 2024
-@@ -1,40 +1,40 @@
+--- release.makefile.orig	Mon Jun 24 04:35:59 2024
++++ release.makefile	Mon Jun 24 05:32:30 2024
+@@ -1,41 +1,41 @@
 -
 +PREFIX := /usr/local
  BUILD_DIR := build
@@ -9,18 +9,18 @@
 +INSTALL_DIR := ${PREFIX}/share/stremio
  ICON_BIN := smartcode-stremio.svg
 -
- SERVER_JS := server.js
 +SERVER_URL != cat server-url.txt
 +STREMIO_BIN := ${INSTALL_DIR}/stremio
 +CORES != sysctl -n hw.ncpu
 +NODE != which node
+ SERVER_JS := server.js
  
 -STREMIO_BIN := ${BUILD_DIR}/stremio
 -
  ALL: ${STREMIO_BIN} ${SERVER_JS} icons
  
  install:
--	make -C ${BUILD_DIR} install
+ 	make -C ${BUILD_DIR} install
 +	mkdir -p ${INSTALL_DIR}
 +	install -Dm 755 "$(BUILD_DIR)/stremio" "$(INSTALL_DIR)/stremio"
  	install -Dm 644 ${SERVER_JS} "${INSTALL_DIR}/server.js"
@@ -32,7 +32,6 @@
 -endif
 +	ln -sf $(NODE) "${INSTALL_DIR}/node"
 +	ln -sf "$(INSTALL_DIR)"/stremio /usr/local/bin/stremio
-+	chmod 755 /usr/local/bin/stremio
  
  uninstall:
 -	rm -f /usr/bin/stremio
@@ -43,6 +42,7 @@
  	mkdir -p "$@"
 -	cd "$@" && printf 16,22,24,32,64,128 | xargs -I^ -d, sh -c 'rsvg-convert ../images/stremio.svg -w ^ -o smartcode-stremio_^.png && rsvg-convert ../images/stremio_tray_white.svg -w ^ -o smartcode-stremio-tray_^.png'
 +	cd "$@" && for size in 16 22 24 32 64 128; do rsvg-convert ../images/stremio.svg -w "$$size" -o "smartcode-stremio_$${size}.png" && rsvg-convert ../images/stremio_tray_white.svg -w "$$size" -o "smartcode-stremio-tray_$${size}.png"; done
++ 
  
  ${SERVER_JS}: 
 -	wget "${shell cat server-url.txt}" -qO ${SERVER_JS} || rm ${SERVER_JS}
@@ -56,3 +56,4 @@
  
  clean:
  	rm -rf ${BUILD_DIR} ${SERVER_JS} icons
+-
