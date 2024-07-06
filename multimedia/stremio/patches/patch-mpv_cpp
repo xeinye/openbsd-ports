@@ -1,0 +1,10 @@
+--- mpv.cpp.orig	Sat Jul  6 01:34:41 2024
++++ mpv.cpp	Sat Jul  6 01:35:30 2024
+@@ -140,6 +140,7 @@
+ 
+ void MpvObject::initialize_mpv() {
+     // terminal=yes brings us all the terminal logs; on windows it's much better with winpty (https://github.com/mpv-player/mpv/blob/master/DOCS/compile-windows.md)
++    mpv_set_option_string(mpv, "config", "yes");
+     mpv_set_option_string(mpv, "terminal", "yes");
+     mpv_set_option_string(mpv, "msg-level", "all=v");
+ 

@@ -44,7 +44,6 @@ do-install:
 
 post-install:
 	ln -sf /usr/local/share/stremio/stremio /usr/local/bin/stremio
-	chmod 755 /usr/local/bin/stremio
 
 .include <bsd.port.mk>
 
